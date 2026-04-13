@@ -1,5 +1,6 @@
 public class MultiOScontainer {
   public static int memoryUsage = 0;
+  public static final int MAX_MEMORY = 10;
     static class OS1 {
         String osname;
         boolean processWorking;
@@ -46,7 +47,7 @@ public class MultiOScontainer {
             this.status = status;
             this.osname = os;
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < MAX_MEMORY; i++) {
                 System.out.println("OS3 is running...");
                 if (i > 5 && i < 6) {
                     processWorking = false;
@@ -77,7 +78,7 @@ public class MultiOScontainer {
     public static void main(String[] args) {
 
         OS3 mac = new OS3(true, "Working", "MacOS");
-        OS2 windows = new OS2(true, "Working", "Windows");
+       
         SharedResources resources = new SharedResources();
         resources.printerAvailable = true;
         resources.memory = 1;
@@ -87,6 +88,10 @@ public class MultiOScontainer {
             System.out.println(mac.osname + " is not working ");
              resources.memory = memoryUsage;
             System.out.println("Memory released by " + mac.osname + " is " + resources.memory);
+             OS2 windows = new OS2(true, "Working", "Windows");
+            for(int i=memoryUsage;i>MAX_MEMORY;i++){
+                
+            }
         }
 
     }
