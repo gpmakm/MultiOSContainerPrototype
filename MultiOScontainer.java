@@ -11,6 +11,7 @@ public class MultiOScontainer {
             this.status = status;
             this.osname = os;
         }
+           
 
     }
 
@@ -23,6 +24,14 @@ public class MultiOScontainer {
             this.processWorking = processWorking;
             this.status = status;
             this.osname = os;
+            for (int i = memoryUsage; i < MAX_MEMORY; i++) {
+                System.out.println("OS2 is running...");
+                if (i > 5 && i < 6) {
+                    processWorking = false;
+                    break;
+                }
+                memoryUsage++;
+            }
         }
 
         public int calculating() {
@@ -47,12 +56,13 @@ public class MultiOScontainer {
             this.status = status;
             this.osname = os;
 
-            for (int i = 0; i < MAX_MEMORY; i++) {
-                System.out.println("OS3 is running...");
-                if (i > 5 && i < 6) {
+            for (int i = memoryUsage; i < MAX_MEMORY; i++) {
+                
+                if (i > 5) {
                     processWorking = false;
                     break;
                 }
+                System.out.println("OS3 is running...");
                 memoryUsage++;
             }
         }
@@ -89,9 +99,12 @@ public class MultiOScontainer {
              resources.memory = memoryUsage;
             System.out.println("Memory released by " + mac.osname + " is " + resources.memory);
              OS2 windows = new OS2(true, "Working", "Windows");
-            for(int i=memoryUsage;i>MAX_MEMORY;i++){
-                
-            }
+             if (windows.processWorking==true) {
+                System.out.println(windows.osname + " is not working");
+                resources.memory=memoryUsage;
+                System.out.println("Memory released by " + windows.osname + " is " + resources.memory);
+             }
+            
         }
 
     }
